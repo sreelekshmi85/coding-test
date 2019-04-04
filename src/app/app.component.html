@@ -1,0 +1,56 @@
+<mat-tab-group style="background-color: aliceblue" mat-align-tabs="center">
+  <mat-tab label="Patient Info">
+  <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>
+            <mat-form-field class="example-form-field">
+                <input matInput type="text" placeholder="Search By Patient's Id" [(ngModel)]="name" (ngModelChange)="valueChange($event); valueChanges($event);">
+                <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-form-field>
+         
+        </mat-card-title>
+      </mat-card-header>
+      <div id="patientInfo" [innerHTML]="patientInfo.text.div"></div><br/>
+
+      <mat-card-content>
+              <h2>Patient's Medical Details</h2>
+            <!-- </mat-form-field> -->
+            <table
+              mat-table
+              [dataSource]="dataSource"
+              matSort
+              class="mat-elevation-z8"
+              layout-align="center center"
+              matSort matSortActive="condition" matSortDisableClear matSortDirection="desc">
+              <!-- Position Column -->
+              <ng-container matColumnDef="condition">
+                <th class="condition" style="width: 500px" mat-header-cell *matHeaderCellDef mat-sort-header>Condition</th>
+                <td mat-cell *matCellDef="let element">{{ element.condition }}</td>
+              </ng-container>
+      
+              <!-- Name Column -->
+              <ng-container matColumnDef="dateWritten">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                  Date Written
+                </th>
+                <td mat-cell *matCellDef="let element">{{ element.dateWritten }}</td>
+              </ng-container>
+      
+              <!-- Weight Column -->
+              <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+                <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+              </ng-container>
+      
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+      </mat-card-content>
+      
+    </mat-card>
+  </mat-tab>
+
+  <router-outlet></router-outlet>
+</mat-tab-group>

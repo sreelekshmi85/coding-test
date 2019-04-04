@@ -1,0 +1,29 @@
+.mat-form-field-infix {
+    width: 210px;
+}
+
+.condition-form-field{
+    padding-left: 15px;
+}
+
+#patientInfo{
+    padding-left: 15px;
+    font-family: verdana;
+}
+
+h2{
+    text-align: center;
+    font-style: Italic;
+    font-family: Times New Roman
+}
+
+.mat-elevation-z8{
+    margin-left:auto;
+    margin-right:auto;
+    width:77%
+}
+
+th{
+    background-color: aliceblue;
+}
+
